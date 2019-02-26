@@ -1,1 +1,1 @@
-# spring-cloud-microservice-study
+# spring-cloud-study
