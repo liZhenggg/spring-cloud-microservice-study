@@ -1,0 +1,33 @@
+server:
+  # 指定Tomcat端口
+  port: 8000
+spring:
+  jpa:
+    # 让hibernate打印执行的SQL
+    show-sql: true
+  application:
+    name: microservice-provider-user
+logging:
+  level:
+    root: INFO
+    # 配置日志级别，让hibernate打印出执行的SQL参数
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+management:
+  endpoints:
+    web:
+      exposure:
+        # 暴露metrics端点，如需暴露多个，用,分隔；如需暴露所有端点，用'*'
+        include: '*'
+  endpoint:
+    health:
+      # 是否展示健康检查详情
+      show-details: always
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
