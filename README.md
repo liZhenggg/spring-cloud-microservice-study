@@ -59,5 +59,7 @@ Hystrix是由Netflix开源的一个延迟和容错库，用于隔离访问远程
 Hystrix主要通过以下几点实现延迟和容错:
 包裹请求、跳闸机制、资源隔离、监控、回退机制、自我修复。
 通用方式使用Hystrix:
-服务降级:加依赖，启动类加注解@EnableCircuitBreaker，
+a)Hystrix会有一个默认的降级方案--抛出异常；
+b)服务降级:启动类加注解@EnableCircuitBreaker，controller方法添加注解@HystrixCommand。
+使用@HystrixCommand 注解，就可保护该API。这里的“保护”，其实带有三层含义——“超时机制”、“仓壁模式”、“断路”。
 

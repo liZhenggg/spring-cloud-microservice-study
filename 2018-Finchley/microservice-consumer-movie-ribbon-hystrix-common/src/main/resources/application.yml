@@ -3,7 +3,7 @@ server:
 spring:
   application:
     # 指定注册到eureka server上的服务名称
-    name: microservice-consumer-movie
+    name: microservice-consumer-movie-ribbon-hystrix-common
 
 eureka:
   client:
@@ -17,7 +17,12 @@ management:
   endpoint:
     health:
       show-details: always
-  endpoints:
-    web:
-      exposure:
-        include: 'hystrix.stream'
+#
+#hystrix:
+#  command:
+#    default:
+#      circuitBreaker:
+#        requestVolumeThreshold: 5
+#      metrics:
+#        rollingStats:
+#          timeInMilliseconds: 10
