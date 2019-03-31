@@ -16,7 +16,7 @@ Ribbon：Netflix发布的客户端负载均衡组件。当Ribbon与Eureka配合�
 
 
 Feign是Netflix开发的声明式、模板化的HTTP客户端，可帮助我们更加便捷、优雅地调用HTTP API。
-在Spring Cloud中，使用Feign只需创建接口，并在接口上添加注解@FeignClient，在2启动类上添加注解@EnableFeignClients 
+在Spring Cloud中，使用Feign只需创建接口，并在接口上添加注解@FeignClient，在启动类上添加注解@EnableFeignClients 
 
 Feign配置自定义:
 方式一、代码配置方式
@@ -63,3 +63,5 @@ a)Hystrix会有一个默认的降级方案--抛出异常；
 b)服务降级:启动类加注解@EnableCircuitBreaker，controller方法添加注解@HystrixCommand。
 使用@HystrixCommand 注解，就可保护该API。这里的“保护”，其实带有三层含义——“超时机制”、“仓壁模式”、“断路”。
 
+Zuul是Netflix开源的微服务网关，它可以和Eureka、Ribbon、Hystrix等组件配合使用。
+服务网关是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过微服务网关。
