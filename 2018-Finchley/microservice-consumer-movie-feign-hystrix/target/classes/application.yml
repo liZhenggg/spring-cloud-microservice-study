@@ -19,5 +19,6 @@ logging:
 
 feign:
   hystrix:
+    #feign 设置全局启用/禁用Hysrix
     #默认Feign是不启用Hystrix的，需要添加如下配置启用Hystrix，这样所有的Feign Client都会受到Hystrix保护
     enabled: true

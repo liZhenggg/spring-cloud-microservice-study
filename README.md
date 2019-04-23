@@ -5,17 +5,18 @@ Spring Boot Actuator：是Spring Boot官方提供的监控组件
 服务发现：服务消费者找到服务提供者的机制，又称服务注册。
 
 
-Eureka：Netflix开源的服务发现组件，本身是一个基于REST的服务，包含Server和Client两部分，Spring Cloud将它集成在子项目Spring Cloud Netflix中。
+Eureka（（因找到某物，尤指问题的答案而高兴）我发现了，我找到了）：Netflix开源的服务发现组件，本身是一个基于REST的服务，包含Server和Client两部分，Spring Cloud将它集成在子项目Spring Cloud Netflix中。
 Eureka Client：负责将这个服务的信息注册到Eureka Server中
 Eureka Server：提供服务发现的能力，各个微服务启动时，会向Eureka Server注册自己的信息（例如IP、端口、微服务名称等），Eureka Server会存储这些信息；
 
 
-Ribbon：Netflix发布的客户端负载均衡组件。当Ribbon与Eureka配合使用时，Ribbon可自动从Eureka Server获取服务提供者地址列表，并基于负载均衡算法，选择其中一个服务提供者实例。
+Ribbon（中文含义带，绶带，带状物）
+是Netflix发布的客户端负载均衡组件。当Ribbon与Eureka配合使用时，Ribbon可自动从Eureka Server获取服务提供者地址列表，并基于负载均衡算法，选择其中一个服务提供者实例。
 负载均衡规则是Ribbon的核心，Ribbon内置的负载均衡规则：AvailabilityFilteringRule，BestAvailableRule，RandomRule，ResponseTimeWeightedRule，RetryRule，RoundRobinRule，WeightedResponseTimeRule，ZoneAvoidanceRule。
 如需自定义负载均衡规则，只需实现IRule 接口或继承AbstractLoadBalancerRule 、PredicateBasedRule即可。
 
 
-Feign是Netflix开发的声明式、模板化的HTTP客户端，可帮助我们更加便捷、优雅地调用HTTP API。
+Feign（中文含义佯装，伪装，创造或虚构）是Netflix开发的声明式、模板化的HTTP客户端，可帮助我们更加便捷、优雅地调用HTTP API。
 在Spring Cloud中，使用Feign只需创建接口，并在接口上添加注解@FeignClient，在启动类上添加注解@EnableFeignClients 
 
 Feign配置自定义:
@@ -62,6 +63,10 @@ Hystrix主要通过以下几点实现延迟和容错:
 a)Hystrix会有一个默认的降级方案--抛出异常；
 b)服务降级:启动类加注解@EnableCircuitBreaker，controller方法添加注解@HystrixCommand。
 使用@HystrixCommand 注解，就可保护该API。这里的“保护”，其实带有三层含义——“超时机制”、“仓壁模式”、“断路”。
+Hystrix Dashboard：将文字形式的监控数据转换成图标展示。
 
-Zuul是Netflix开源的微服务网关，它可以和Eureka、Ribbon、Hystrix等组件配合使用。
-服务网关是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过微服务网关。
+
+Zuul：是Netflix开源的微服务网关，它可以和Eureka、Ribbon、Hystrix等组件配合使用，Zuul的核心是一系列的过滤器。
+微服务网关：是介于客户端和服务器端之间的中间层，所有的外部请求都会先经过微服务网关。微服务网关封装了应用程序的内部结构，客户端只须跟网关交互，而无须直接调用特定微服务的接口。
+优点：简化开发；易于监控;易于认证;减少了客户端与各个微服务之间的交互次数;
+

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/movies")
 @RestController
 public class MovieController {
+    @Autowired
     private UserFeignClient userFeignClient;
 
     @GetMapping("/users/{id}")
